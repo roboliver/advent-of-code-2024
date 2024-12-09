@@ -3,6 +3,7 @@ package common;
 import day01.DayOne;
 import day02.DayTwo;
 import day03.DayThree;
+import day04.DayFour;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +14,8 @@ public enum DayMeta {
         }, true),
     ONE(DayOne::new),
     TWO(DayTwo::new),
-    THREE(DayThree::new);
+    THREE(DayThree::new),
+    FOUR(DayFour::new);
 
     private final DayConstructor constructor;
     private final boolean isTodo;
