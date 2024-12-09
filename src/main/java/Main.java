@@ -5,14 +5,13 @@ import common.ReaderUtils;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static common.DayMeta.ONE;
-import static common.DayMeta.TODO;
+import static common.DayMeta.*;
 import static common.ExceptionUtils.exceptionStackTrace;
 
 public class Main {
 
     private static final List<DayMeta> DAYS = List.of(
-            ONE, TODO, TODO, TODO, TODO,
+            ONE, TWO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO,

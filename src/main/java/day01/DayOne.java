@@ -27,8 +27,8 @@ public class DayOne implements Day {
                 rightNums.add(Integer.parseInt(numPair[1]));
             }
         }
-        this.leftNums = leftNums;
-        this.rightNums = rightNums;
+        this.leftNums = Collections.unmodifiableList(leftNums);
+        this.rightNums = Collections.unmodifiableList(rightNums);
     }
 
     @Override
@@ -63,5 +63,4 @@ public class DayOne implements Day {
                 .mapToLong(Long::longValue)
                 .sum();
     }
-
 }

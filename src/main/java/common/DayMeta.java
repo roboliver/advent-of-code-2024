@@ -1,6 +1,7 @@
 package common;
 
 import day01.DayOne;
+import day02.DayTwo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +10,8 @@ public enum DayMeta {
     TODO(it -> {
             throw new IllegalStateException("Day is still todo, cannot be inited");
         }, true),
-    ONE(DayOne::new);
+    ONE(DayOne::new),
+    TWO(DayTwo::new);
 
     private final DayConstructor constructor;
     private final boolean isTodo;
