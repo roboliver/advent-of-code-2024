@@ -16,16 +16,16 @@ public class DayOne implements Day {
     private final List<Integer> leftNums;
     private final List<Integer> rightNums;
 
-    public DayOne(BufferedReader lines) throws IOException {
+    public DayOne(BufferedReader input) throws IOException {
         var leftNums = new ArrayList<Integer>();
         var rightNums = new ArrayList<Integer>();
-        try (lines) {
-            String line;
-            while ((line = lines.readLine()) != null) {
-                var numPair = line.split(" {3}");
-                leftNums.add(Integer.parseInt(numPair[0]));
-                rightNums.add(Integer.parseInt(numPair[1]));
-            }
+        try (input) {
+            input.lines()
+                    .map(line -> line.split(" {3}"))
+                    .forEach(numPair -> {
+                        leftNums.add(Integer.parseInt(numPair[0]));
+                        rightNums.add(Integer.parseInt(numPair[1]));
+                    });
         }
         this.leftNums = Collections.unmodifiableList(leftNums);
         this.rightNums = Collections.unmodifiableList(rightNums);

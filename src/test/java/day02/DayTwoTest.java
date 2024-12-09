@@ -31,7 +31,7 @@ public class DayTwoTest {
     }
 
     @Test
-    void testPartTwo() throws IOException {
+    void testPartTwo() {
         assertEquals(4, sut.partTwo());
     }
 }

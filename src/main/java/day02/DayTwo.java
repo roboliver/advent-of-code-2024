@@ -13,18 +13,14 @@ public class DayTwo implements Day {
 
     private final List<List<Integer>> reports;
 
-    public DayTwo(BufferedReader lines) throws IOException {
-        var reports = new ArrayList<List<Integer>>();
-        try (lines) {
-            String line;
-            while ((line = lines.readLine()) != null) {
-                var report = Arrays.stream(line.split(" "))
-                        .map(Integer::parseInt)
-                        .toList();
-                reports.add(report);
-            }
+    public DayTwo(BufferedReader input) throws IOException {
+        try (input) {
+            this.reports = input.lines()
+                    .map(line -> Arrays.stream(line.split(" "))
+                            .map(Integer::parseInt)
+                            .toList())
+                    .toList();
         }
-        this.reports = Collections.unmodifiableList(reports);
     }
 
     @Override
