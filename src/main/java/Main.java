@@ -11,7 +11,7 @@ import static common.ExceptionUtils.exceptionStackTrace;
 public class Main {
 
     private static final List<DayMeta> DAYS = List.of(
-            ONE, TWO, THREE, FOUR, TODO,
+            ONE, TWO, THREE, FOUR, FIVE,
             TODO, TODO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO,
