@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
 
-public class DayFive implements Day {
+public class DayFive implements Day<Integer> {
     // key = page number, value = numbers of pages that should precede key page
     private final Map<Integer, Set<Integer>> pageOrderingRules;
     private final List<List<Integer>> updates;
@@ -37,7 +37,7 @@ public class DayFive implements Day {
     }
 
     @Override
-    public int partOne() {
+    public Integer partOne() {
         return updates.stream()
                 .filter(this::isOrdered)
                 .map(this::getMiddlePage)
@@ -50,7 +50,7 @@ public class DayFive implements Day {
     }
 
     @Override
-    public int partTwo() {
+    public Integer partTwo() {
         return updates.stream()
                 .filter(update -> !isOrdered(update))
                 .map(this::orderPages)

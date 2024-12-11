@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class DayTwo implements Day {
+public class DayTwo implements Day<Integer> {
 
     private final List<List<Integer>> reports;
 
@@ -29,7 +29,7 @@ public class DayTwo implements Day {
     }
 
     @Override
-    public int partOne() {
+    public Integer partOne() {
         return (int) reports.stream()
                 .filter(this::isSafe)
                 .count();
@@ -41,7 +41,7 @@ public class DayTwo implements Day {
     }
 
     @Override
-    public int partTwo() {
+    public Integer partTwo() {
         return (int) reports.stream()
                 .filter(this::isSafeActual)
                 .count();

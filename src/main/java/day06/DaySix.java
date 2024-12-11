@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
 
-public class DaySix implements Day {
+public class DaySix implements Day<Integer> {
 
     private final Set<Point> obstacles;
     private final DirectedPosition startDirPos;
@@ -49,7 +49,7 @@ public class DaySix implements Day {
     }
 
     @Override
-    public int partOne() {
+    public Integer partOne() {
         var visited = new HashSet<Point>();
         var currentDirPos = startDirPos;
         do {
@@ -65,7 +65,7 @@ public class DaySix implements Day {
     }
 
     @Override
-    public int partTwo() {
+    public Integer partTwo() {
         var defaultRoute = calculateRoute();
         var routeTraversed = new HashSet<DirectedPosition>();
         var tilesVisited = new HashSet<Point>();

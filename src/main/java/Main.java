@@ -12,7 +12,7 @@ public class Main {
 
     private static final List<DayMeta> DAYS = List.of(
             ONE, TWO, THREE, FOUR, FIVE,
-            SIX, TODO, TODO, TODO, TODO,
+            SIX, SEVEN, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO
@@ -36,7 +36,7 @@ public class Main {
                 System.out.println("TODO");
                 return;
             }
-            Day day;
+            Day<?> day;
             try {
                 var lines = ReaderUtils.inputLineReader(dayNum);
                 day = dayMeta.construct(lines);
@@ -49,7 +49,7 @@ public class Main {
             printPart("two", day.partTwoName(), day::partTwo);
     }
 
-    private static void printPart(String part, String partName, Supplier<Integer> partMethod) {
+    private static <T> void printPart(String part, String partName, Supplier<T> partMethod) {
         try {
             var result = partMethod.get();
             System.out.println("Part " + part + " (" + partName + "): " + result);

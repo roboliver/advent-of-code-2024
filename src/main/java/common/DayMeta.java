@@ -6,6 +6,7 @@ import day03.DayThree;
 import day04.DayFour;
 import day05.DayFive;
 import day06.DaySix;
+import day07.DaySeven;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +20,8 @@ public enum DayMeta {
     THREE(DayThree::new),
     FOUR(DayFour::new),
     FIVE(DayFive::new),
-    SIX(DaySix::new);
+    SIX(DaySix::new),
+    SEVEN(DaySeven::new);
 
     private final DayConstructor constructor;
     private final boolean isTodo;
@@ -37,11 +39,11 @@ public enum DayMeta {
         return this.isTodo;
     }
 
-    public Day construct(BufferedReader lines) throws IOException {
+    public Day<?> construct(BufferedReader lines) throws IOException {
         return constructor.apply(lines);
     }
 
     private interface DayConstructor {
-        Day apply(BufferedReader lines) throws IOException;
+        Day<?> apply(BufferedReader lines) throws IOException;
     }
 }

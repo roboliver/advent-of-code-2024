@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class DayThree implements Day {
+public class DayThree implements Day<Integer> {
 
     private static final String MUL_PATTERN = "mul\\(([1-9][0-9]*),([1-9][0-9]*)\\)";
     private final String memory;
@@ -25,7 +25,7 @@ public class DayThree implements Day {
     }
 
     @Override
-    public int partOne() {
+    public Integer partOne() {
         var pattern = Pattern.compile(MUL_PATTERN);
         var matcher = pattern.matcher(memory);
         return matcher.results()
@@ -39,7 +39,7 @@ public class DayThree implements Day {
     }
 
     @Override
-    public int partTwo() {
+    public Integer partTwo() {
         var pattern = Pattern.compile("(do\\(\\))|(don't\\(\\))|" + MUL_PATTERN);
         var matcher = pattern.matcher(memory);
         var enabled = true;

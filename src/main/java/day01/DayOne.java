@@ -11,7 +11,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class DayOne implements Day {
+public class DayOne implements Day<Integer> {
 
     private final List<Integer> leftNums;
     private final List<Integer> rightNums;
@@ -37,7 +37,7 @@ public class DayOne implements Day {
     }
 
     @Override
-    public int partOne() {
+    public Integer partOne() {
         var leftNumsCopy = new ArrayList<>(this.leftNums);
         var rightNumsCopy = new ArrayList<>(this.rightNums);
         Collections.sort(leftNumsCopy);
@@ -53,7 +53,7 @@ public class DayOne implements Day {
     }
 
     @Override
-    public int partTwo() {
+    public Integer partTwo() {
         var rightNumCounts = rightNums.stream()
                 .collect(Collectors.groupingBy(
                         Function.identity(),

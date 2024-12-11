@@ -1,13 +1,13 @@
 package common;
 
-public interface Day {
+public interface Day<T> {
 
     String partOneName();
 
-    int partOne();
+    T partOne();
 
     String partTwoName();
 
-    int partTwo();
+    T partTwo();
 
 }

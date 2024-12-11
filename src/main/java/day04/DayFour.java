@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
-public class DayFour implements Day {
+public class DayFour implements Day<Integer> {
 
     private final char[][] wordSearch;
 
@@ -29,7 +29,7 @@ public class DayFour implements Day {
     }
 
     @Override
-    public int partOne() {
+    public Integer partOne() {
         return doPart(XmasArrangement.toLetterPositions(), 'X');
 
     }
@@ -40,7 +40,7 @@ public class DayFour implements Day {
     }
 
     @Override
-    public int partTwo() {
+    public Integer partTwo() {
         return doPart(CrossMasArrangement.toLetterPositions(), 'A');
     }
 
