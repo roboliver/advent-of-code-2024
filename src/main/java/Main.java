@@ -12,7 +12,7 @@ public class Main {
 
     private static final List<DayMeta> DAYS = List.of(
             ONE, TWO, THREE, FOUR, FIVE,
-            SIX, SEVEN, EIGHT, TODO, TODO,
+            SIX, SEVEN, EIGHT, NINE, TODO,
             TODO, TODO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO
