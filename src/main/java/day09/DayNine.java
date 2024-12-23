@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class DayNine implements Day<Long> {
 
-    static final int FREE_ID = -1;
-
     private final String diskContents;
 
     public DayNine(BufferedReader input) throws IOException {
