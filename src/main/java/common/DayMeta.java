@@ -11,6 +11,7 @@ import day08.DayEight;
 import day09.DayNine;
 import day10.DayTen;
 import day11.DayEleven;
+import day12.DayTwelve;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,7 +30,8 @@ public enum DayMeta {
     EIGHT(DayEight::new),
     NINE(DayNine::new),
     TEN(DayTen::new),
-    ELEVEN(DayEleven::new);
+    ELEVEN(DayEleven::new),
+    TWELVE(DayTwelve::new);
 
     private final DayConstructor constructor;
     private final boolean isTodo;
