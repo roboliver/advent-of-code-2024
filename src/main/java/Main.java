@@ -14,7 +14,7 @@ public class Main {
             ONE, TWO, THREE, FOUR, FIVE,
             SIX, SEVEN, EIGHT, NINE, TEN,
             ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN,
-            SIXTEEN, SEVENTEEN, TODO, TODO, TODO,
+            SIXTEEN, SEVENTEEN, EIGHTEEN, TODO, TODO,
             TODO, TODO, TODO, TODO, TODO
     );
 
@@ -30,23 +30,26 @@ public class Main {
     }
 
     private static void runDay(int dayNum) {
-            System.out.println("\n======\nDay " + String.format("%02d", dayNum) + "\n======");
-            var dayMeta = DAYS.get(dayNum - 1); // get zero indexed day
-            if (dayMeta.isTodo()) {
-                System.out.println("TODO");
-                return;
-            }
-            DayDoubleType<?, ?> day;
-            try {
-                var lines = ReaderUtils.inputLineReader(dayNum);
-                day = dayMeta.construct(lines);
-            } catch (Exception e) {
-                System.out.println("Exception thrown constructing day:");
-                System.out.println(exceptionStackTrace(e));
-                return;
-            }
-            printPart("one", day.partOneName(), day::partOne);
-            printPart("two", day.partTwoName(), day::partTwo);
+        long msBefore = System.currentTimeMillis();
+        System.out.println("\n======\nDay " + String.format("%02d", dayNum) + "\n======");
+        var dayMeta = DAYS.get(dayNum - 1); // get zero indexed day
+        if (dayMeta.isTodo()) {
+            System.out.println("TODO");
+            return;
+        }
+        DayDoubleType<?, ?> day;
+        try {
+            var lines = ReaderUtils.inputLineReader(dayNum);
+            day = dayMeta.construct(lines);
+        } catch (Exception e) {
+            System.out.println("Exception thrown constructing day:");
+            System.out.println(exceptionStackTrace(e));
+            return;
+        }
+        printPart("one", day.partOneName(), day::partOne);
+        printPart("two", day.partTwoName(), day::partTwo);
+        long msAfter = System.currentTimeMillis();
+        System.out.println("Time taken: " + (msAfter - msBefore) + "ms");
     }
 
     private static <T> void printPart(String part, String partName, Supplier<T> partMethod) {

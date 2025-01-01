@@ -21,12 +21,27 @@ public record Point(int x, int y) {
     }
 
     public Point rotateAround(Point other, Turn turn) {
-        return switch(turn) {
+        return switch (turn) {
             case QUARTER -> new Point(y, 2 * other.x() - x);
             case HALF -> new Point(2 * other.x() - x, 2 * other.y() - y);
             case THREE_QUARTER -> new Point(2 * other.y() - y, x);
         };
     }
 
+    public Point above() {
+        return new Point(x, y - 1);
+    }
+
+    public Point below() {
+        return new Point(x, y + 1);
+    }
+
+    public Point left() {
+        return new Point(x - 1, y);
+    }
+
+    public Point right() {
+        return new Point(x + 1, y);
+    }
 
 }
