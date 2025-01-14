@@ -104,14 +104,10 @@ public class DaySix implements Day<Integer> {
     }
 
     private DirectedPosition nextDirPos(DirectedPosition currentDirPos, Set<Point> obstacles) {
-        return nextDirPos(currentDirPos, obstacles, null);
-    }
-
-    private DirectedPosition nextDirPos(DirectedPosition currentDirPos, Set<Point> obstacles, Point extraObstacle) {
         var currentPos = currentDirPos.pos();
         var currentDir = currentDirPos.dir();
         var nextPos = currentDir.move(currentPos);
-        if (nextPos == extraObstacle || obstacles.contains(nextPos)) {
+        if (obstacles.contains(nextPos)) {
             currentDir = Direction.rotate(currentDir);
         } else {
             currentPos = nextPos;

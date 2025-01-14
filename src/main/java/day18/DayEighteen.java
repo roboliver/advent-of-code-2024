@@ -84,26 +84,22 @@ public class DayEighteen implements DayDoubleType<Integer, String> {
         return moveGrid;
     }
 
-    private MemSpace[][] initCorruptionGrid() {
-        var corruptionGrid = new MemSpace[length][width];
-        for (int row = 0; row < length; row++) {
-            Arrays.fill(corruptionGrid[row], MemSpace.SAFE);
-        }
-        return corruptionGrid;
+    private boolean[][] initCorruptionGrid() {
+        return new boolean[length][width];
     }
 
-    private void dropBytes(MemSpace[][] corruptionGrid, int numBytes) {
+    private void dropBytes(boolean[][] corruptionGrid, int numBytes) {
         for (int i = 0; i < numBytes; i++) {
             dropByte(corruptionGrid, i);
         }
     }
 
-    private void dropByte(MemSpace[][] corruptionGrid, int i) {
+    private void dropByte(boolean[][] corruptionGrid, int i) {
         var byteToDrop = bytes.get(i);
-        corruptionGrid[byteToDrop.y()][byteToDrop.x()] = MemSpace.CORRUPTED;
+        corruptionGrid[byteToDrop.y()][byteToDrop.x()] = true;
     }
 
-    private void traverseGrid(int[][] moveGrid, MemSpace[][] corruptionGrid) {
+    private void traverseGrid(int[][] moveGrid, boolean[][] corruptionGrid) {
         var pathEnds = Set.of(new Point(0, 0));
         while (!pathEnds.isEmpty()) {
             var newPathEnds = new HashSet<Point>();
@@ -119,7 +115,7 @@ public class DayEighteen implements DayDoubleType<Integer, String> {
                     int newX = newPathEnd.x();
                     int newY = newPathEnd.y();
                     if (newX >= 0 && newX < width && newY >= 0 && newY < length &&
-                            corruptionGrid[newY][newX] == MemSpace.SAFE &&
+                            !corruptionGrid[newY][newX] &&
                             moveGrid[newY][newX] > (moveGrid[curY][curX] + 1)) {
                         moveGrid[newY][newX] = moveGrid[curY][curX] + 1;
                         newPathEnds.add(newPathEnd);
@@ -130,12 +126,12 @@ public class DayEighteen implements DayDoubleType<Integer, String> {
         }
     }
 
-    public String gridToStr(MemSpace[][] grid) {
+    public String gridToStr(boolean[][] grid) {
         var buf = new StringBuilder();
         for (int row = 0; row < grid.length; row++) {
             buf.append("\n");
             for (int col = 0; col < grid[0].length; col++) {
-                buf.append(grid[row][col] == MemSpace.CORRUPTED ? '#' : '.');
+                buf.append(grid[row][col] ? '#' : '.');
             }
         }
         return buf.toString();

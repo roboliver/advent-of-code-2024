@@ -20,6 +20,7 @@ import day17.DaySeventeen;
 import day18.DayEighteen;
 import day19.DayNineteen;
 import day20.DayTwenty;
+import day21.DayTwentyOne;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,7 +48,8 @@ public enum DayMeta {
     SEVENTEEN(DaySeventeen::new),
     EIGHTEEN(DayEighteen::new),
     NINETEEN(DayNineteen::new),
-    TWENTY(DayTwenty::new);
+    TWENTY(DayTwenty::new),
+    TWENTY_ONE(DayTwentyOne::new);
 
     private final DayConstructor constructor;
     private final boolean isTodo;
