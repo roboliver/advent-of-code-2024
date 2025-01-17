@@ -1,5 +1,5 @@
 import common.DayMeta;
-import common.DayDoubleType;
+import common.DaySplitType;
 import common.ReaderUtils;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class Main {
             SIX, SEVEN, EIGHT, NINE, TEN,
             ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN,
             SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, TWENTY,
-            TWENTY_ONE, TODO, TODO, TODO, TODO
+            TWENTY_ONE, TWENTY_TWO, TODO, TODO, TODO
     );
 
     public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class Main {
             System.out.println("TODO");
             return;
         }
-        DayDoubleType<?, ?> day;
+        DaySplitType<?, ?> day;
         try {
             var lines = ReaderUtils.inputLineReader(dayNum);
             day = dayMeta.construct(lines);

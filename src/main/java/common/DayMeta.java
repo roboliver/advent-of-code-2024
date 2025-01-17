@@ -21,6 +21,7 @@ import day18.DayEighteen;
 import day19.DayNineteen;
 import day20.DayTwenty;
 import day21.DayTwentyOne;
+import day22.DayTwentyTwo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -49,7 +50,8 @@ public enum DayMeta {
     EIGHTEEN(DayEighteen::new),
     NINETEEN(DayNineteen::new),
     TWENTY(DayTwenty::new),
-    TWENTY_ONE(DayTwentyOne::new);
+    TWENTY_ONE(DayTwentyOne::new),
+    TWENTY_TWO(DayTwentyTwo::new);
 
     private final DayConstructor constructor;
     private final boolean isTodo;
@@ -67,11 +69,11 @@ public enum DayMeta {
         return this.isTodo;
     }
 
-    public DayDoubleType<?, ?> construct(BufferedReader lines) throws IOException {
+    public DaySplitType<?, ?> construct(BufferedReader lines) throws IOException {
         return constructor.apply(lines);
     }
 
     private interface DayConstructor {
-        DayDoubleType<?, ?> apply(BufferedReader lines) throws IOException;
+        DaySplitType<?, ?> apply(BufferedReader lines) throws IOException;
     }
 }

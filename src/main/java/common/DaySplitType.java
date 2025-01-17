@@ -1,6 +1,6 @@
 package common;
 
-public interface DayDoubleType<T, U> {
+public interface DaySplitType<T, U> {
 
     String partOneName();
 

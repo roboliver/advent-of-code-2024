@@ -1,6 +1,6 @@
 package day18;
 
-import common.DayDoubleType;
+import common.DaySplitType;
 import common.Point;
 
 import java.io.BufferedReader;
@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DayEighteen implements DayDoubleType<Integer, String> {
+public class DayEighteen implements DaySplitType<Integer, String> {
 
     private final List<Point> bytes;
     private final int width;

@@ -1,5 +1,5 @@
 package common;
 
-public interface Day<T> extends DayDoubleType<T, T> {
+public interface Day<T> extends DaySplitType<T, T> {
 
 }

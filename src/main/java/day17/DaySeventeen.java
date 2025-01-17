@@ -1,6 +1,6 @@
 package day17;
 
-import common.DayDoubleType;
+import common.DaySplitType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class DaySeventeen implements DayDoubleType<String, Long> {
+public class DaySeventeen implements DaySplitType<String, Long> {
 
     private final long regA;
     private final long regB;
