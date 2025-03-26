@@ -15,7 +15,7 @@ public class Main {
             SIX, SEVEN, EIGHT, NINE, TEN,
             ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN,
             SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, TWENTY,
-            TWENTY_ONE, TWENTY_TWO, TWENTY_THREE, TODO, TODO
+            TWENTY_ONE, TWENTY_TWO, TWENTY_THREE, TWENTY_FOUR, TODO
     );
 
     public static void main(String[] args) {

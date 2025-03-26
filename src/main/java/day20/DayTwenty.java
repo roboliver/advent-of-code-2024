@@ -95,9 +95,9 @@ public class DayTwenty implements Day<Integer> {
     }
 
     private void traverse(int[][] moves) {
-        var pathEnds = Set.of(start);
+        var pathEnds = List.of(start);
         while (!pathEnds.isEmpty()) {
-            var newPathEnds = new HashSet<Position>();
+            var newPathEnds = new ArrayList<Position>();
             for (var pathEnd : pathEnds) {
                 int curRow = pathEnd.row();
                 int curCol = pathEnd.col();
