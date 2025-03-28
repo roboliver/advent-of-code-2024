@@ -1,4 +1,4 @@
-package common;
+package config;
 
 import day01.DayOne;
 import day02.DayTwo;

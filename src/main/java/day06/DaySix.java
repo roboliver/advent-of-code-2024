@@ -1,7 +1,7 @@
 package day06;
 
-import common.Day;
 import common.Point;
+import config.Day;
 
 import java.io.BufferedReader;
 import java.io.IOException;

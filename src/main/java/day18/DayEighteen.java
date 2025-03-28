@@ -1,6 +1,6 @@
 package day18;
 
-import common.DaySplitType;
+import config.DaySplitType;
 import common.Point;
 
 import java.io.BufferedReader;

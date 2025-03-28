@@ -1,4 +1,4 @@
-package common;
+package config;
 
 public interface DaySplitType<T, U> {
 

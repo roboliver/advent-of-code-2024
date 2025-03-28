@@ -1,6 +1,6 @@
 package day14;
 
-import common.Day;
+import config.Day;
 import common.Point;
 
 import java.io.BufferedReader;

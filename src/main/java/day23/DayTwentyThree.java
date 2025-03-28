@@ -1,6 +1,6 @@
 package day23;
 
-import common.DaySplitType;
+import config.DaySplitType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
