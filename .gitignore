@@ -35,4 +35,5 @@ build/
 .DS_Store
 
 ### Advent of Code puzzle inputs ###
-**/*.txt
+**/day*.txt
+**/answers.txt
