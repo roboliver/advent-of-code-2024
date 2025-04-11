@@ -84,22 +84,13 @@ public class DayFourteen implements Day<Integer> {
         if (horizontalBandOffset == -1 || verticalBandOffset == -1) {
             throw new IllegalStateException();
         }
-        return findOverlap(horizontalBandOffset, verticalBandOffset);
-    }
-
-    private int findOverlap(int horizontalBandOffset, int verticalBandOffset) {
-        int factorFromOffset = verticalBandOffset - horizontalBandOffset;
-        int factorFromInverse = -1;
-        for (int i = 0; i < height; i++) {
-            if ((i * height) % width == 1) {
-                factorFromInverse = i;
+        for (int i = 0; i <= width; i++) {
+            int maybeOverlap = i * width + verticalBandOffset;
+            if ((maybeOverlap - horizontalBandOffset) % height == 0) {
+                return maybeOverlap;
             }
         }
-        if (factorFromInverse == -1) {
-            throw new IllegalStateException();
-        }
-        int multiple = (factorFromOffset * factorFromInverse) % width;
-        return multiple * height + horizontalBandOffset;
+        throw new IllegalStateException();
     }
 
     private boolean aligned(int[][] room, int length, BiFunction<int[][], Integer, Integer> countFunc) {
