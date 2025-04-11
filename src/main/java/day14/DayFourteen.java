@@ -1,12 +1,13 @@
 package day14;
 
-import config.Day;
 import common.Point;
+import config.Day;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -69,17 +70,67 @@ public class DayFourteen implements Day<Integer> {
 
     @Override
     public Integer partTwo() {
-        // horizontal clusters observed at i=31,134,...
-        // vertical clusters observed at i=81,189,...
-        // -> tree pattern is created whenever these clusters overlap.
-        // (clusters found using displayRoomAfter visualisation method. Only works on my day14.txt input!)
-        int i = 0;
-        while (true) {
-            if (((i - 31) % 103 == 0) && ((i - 88) % 101 == 0)) {
-                return i;
+        int horizontalBandOffset = -1;
+        int verticalBandOffset = -1;
+        for (int i = 0; i < Math.max(width, height) && (horizontalBandOffset == -1 || verticalBandOffset == -1); i++) {
+            var room = calcRoomAfter(i);
+            if (aligned(room, room.length, this::robotCountRow)) {
+                horizontalBandOffset = i;
             }
-            i++;
+            if (aligned(room, room[0].length, this::robotCountCol)) {
+                verticalBandOffset = i;
+            }
         }
+        if (horizontalBandOffset == -1 || verticalBandOffset == -1) {
+            throw new IllegalStateException();
+        }
+        return findOverlap(horizontalBandOffset, verticalBandOffset);
+    }
+
+    private int findOverlap(int horizontalBandOffset, int verticalBandOffset) {
+        int factorFromOffset = verticalBandOffset - horizontalBandOffset;
+        int factorFromInverse = -1;
+        for (int i = 0; i < height; i++) {
+            if ((i * height) % width == 1) {
+                factorFromInverse = i;
+            }
+        }
+        if (factorFromInverse == -1) {
+            throw new IllegalStateException();
+        }
+        int multiple = (factorFromOffset * factorFromInverse) % width;
+        return multiple * height + horizontalBandOffset;
+    }
+
+    private boolean aligned(int[][] room, int length, BiFunction<int[][], Integer, Integer> countFunc) {
+        int bandWidth = length / 3;
+        int robots = 0;
+        for (int i = 0; i < bandWidth; i++) {
+            robots += countFunc.apply(room, i);
+        }
+        for (int i = bandWidth; i < length; i++) {
+            if (isBand(robots)) {
+                return true;
+            }
+            robots -= countFunc.apply(room, i - bandWidth);
+            robots += countFunc.apply(room, i);
+        }
+        return isBand(robots);
+    }
+
+    private int robotCountRow(int[][] room, int row) {
+        return Arrays.stream(room[row])
+                .sum();
+    }
+
+    private int robotCountCol(int[][] room, int col) {
+        return Arrays.stream(room)
+                .mapToInt(it -> it[col])
+                .sum();
+    }
+
+    private boolean isBand(int robots) {
+        return robots > posVels.size() * 0.75;
     }
 
     private Quadrant determineQuadrant(int x, int y) {
@@ -96,13 +147,18 @@ public class DayFourteen implements Day<Integer> {
         }
     }
 
-    private String displayRoomAfter(int seconds) {
+    private int[][] calcRoomAfter(int seconds) {
         int[][] room = new int[height][width];
         for (var posVel : posVels) {
             int x = calcPositionAfter(posVel.xPos(), posVel.xVel(), width, seconds);
             int y = calcPositionAfter(posVel.yPos(), posVel.yVel(), height, seconds);
             room[y][x]++;
         }
+        return room;
+    }
+
+    private String displayRoomAfter(int seconds) {
+        int[][] room = calcRoomAfter(seconds);
         var buf = new StringBuilder();
         for (int y = 0; y < room.length; y++) {
             for (int x = 0; x < room[0].length; x++) {
